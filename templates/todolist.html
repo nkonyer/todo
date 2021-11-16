@@ -16,7 +16,7 @@
         }
 
         h1{
-            font-size: 5rem;
+            font-size: 3.5rem;
         }
 
         .todoTitle{
@@ -61,7 +61,8 @@
             </div>
             <div class="col-sm-2">
                 <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                    <input type="submit" value="Delete">
+                    <!-- <buttom type="submit" class="btn btn-danger">Delete</buttom> -->
+                    <input class="btn btn-danger" type="submit" value="Delete">
                 </form>
             </div>
         </div>
