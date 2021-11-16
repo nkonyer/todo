@@ -49,6 +49,7 @@
             </div>
         </div>
     </div>
+
 </head>
 
 <body>
@@ -57,15 +58,10 @@
     {% for i in all_items %}
     <div class="todoItem">
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-11">
                 <li><b><em>{{i.content}}</em></b></li>
             </div>
-            <div class="col-sm-2">
-                <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                    <!-- <buttom type="submit" class="btn btn-danger">Delete</buttom> -->
-                    <input class="btn btn-danger" type="submit" value="Delete">
-                </form>
-            </div>
+
             <div class="col-sm-1">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -73,9 +69,12 @@
                         ...
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Add description</a>
+                        <a class="dropdown-item" href="#">Mark as complete</a>
                         <a class="dropdown-item" href="#">Something else here</a>
+                        <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                        </form>
                     </div>
                 </div>
             </div>
