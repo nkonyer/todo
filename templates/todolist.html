@@ -59,7 +59,11 @@
     <div class="todoItem">
         <div class="row">
             <div class="col-sm-11">
-                <li id="todoItemContent"><b><em> {{i.content}} {{i.isCompleted}}</em></b></li>
+                <li class="todoItemContent">
+                    {% if i.isCompleted %}<s>{% endif %}
+                    <b><em>{{i.content}}</em></b>
+                    {% if i.isCompleted %}</s>{% endif %}
+                </li>
             </div>
 
             <div class="col-sm-1">
@@ -87,13 +91,14 @@
     {% endfor %}
 </div>
 
-    <p id="testingtesting">testing testing testing</p>
-
-    <!-- add strikethrough to completed tasks -->
+    <!-- add strikethrough to completed tasks
     <script>
-        document.getElementByID("todoItemContent").style.text-decoration = "line-through";
-        document.getElementByID("testingtesting").style.color="white";
+        var todoHTMLItems = document.getElementsByClassName('todoItemContent');
+        for (var i = 0; i < todoHTMLItems.length; i++) {
+            todoHTMLItems[i].style.textDecoration = "line-through";
+        }
     </script>
+    -->
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
