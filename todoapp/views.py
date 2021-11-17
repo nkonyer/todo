@@ -26,3 +26,11 @@ def markAsReadTodoView(request, i):
     y.isCompleted = True
     y.save()
     return HttpResponseRedirect('/todoapp/')
+
+
+def markAsUnreadTodoView(request, i):
+    y = TodoListItem.objects.get(id=i)
+    y.isCompleted = False
+    y.save()
+    return HttpResponseRedirect('/todoapp/')
+

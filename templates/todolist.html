@@ -75,9 +75,15 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Add description</a>
 
+                        {% if i.isCompleted %}
+                        <form action="/markAsUnreadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+                            <input class="btn btn-secondary" type="submit" value="Mark as Incomplete">
+                        </form>
+                        {% else %}
                         <form action="/markAsReadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
                             <input class="btn btn-secondary" type="submit" value="Mark as Complete">
                         </form>
+                        {% endif %}
 
                         <a class="dropdown-item" href="#">Something else here</a>
                         <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
