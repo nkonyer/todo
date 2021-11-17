@@ -19,3 +19,10 @@ def deleteTodoView(request, i):
     y = TodoListItem.objects.get(id=i)
     y.delete()
     return HttpResponseRedirect('/todoapp/')
+
+
+def markAsReadTodoView(request, i):
+    y = TodoListItem.objects.get(id=i)
+    y.isCompleted = True
+    y.save()
+    return HttpResponseRedirect('/todoapp/')
