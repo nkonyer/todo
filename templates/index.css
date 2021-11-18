@@ -1,0 +1,22 @@
+body{
+    background: #222222;
+}
+
+h1{
+    font-size: 3.5rem;
+}
+
+.todoTitle{
+    background: #222222;
+    font-size: 1.2rem;
+    margin-top: 60px;
+    margin-bottom:30px;
+}
+
+.todoItem{
+    padding: 15px;
+    font-size: 1.3rem;
+    background: #BBBBBB;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
