@@ -19,9 +19,10 @@ from todoapp.views import todoappView, addTodoView, deleteTodoView, markAsReadTo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('todoapp/', todoappView),
+    # path('todoapp/', todoappView),
     path('addTodoItem/', addTodoView),
     path('deleteTodoItem/<int:i>/', deleteTodoView),
     path('markAsReadTodoItem/<int:i>/', markAsReadTodoView),
     path('markAsUnreadTodoItem/<int:i>/', markAsUnreadTodoView),
+    path('', todoappView),
 ]

@@ -11,8 +11,9 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 
-    <script type="text/javascript" src="index.js"></script>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    {% load static %}
+    <script type="text/javascript" src="{% static 'index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 
     <div class="container text-white">
         <div class="todoTitle">
