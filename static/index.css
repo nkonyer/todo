@@ -1,5 +1,5 @@
 body{
-    background: #222222;
+    background: white;
 }
 
 h1{
@@ -7,7 +7,6 @@ h1{
 }
 
 .todoTitle{
-    background: #222222;
     font-size: 1.2rem;
     margin-top: 60px;
     margin-bottom:30px;
@@ -16,7 +15,6 @@ h1{
 .todoItem{
     padding: 15px;
     font-size: 1.3rem;
-    background: #BBBBBB;
     margin-bottom: 15px;
     margin-top: 15px;
 }
