@@ -11,9 +11,96 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/4764f4dcde.js" crossorigin="anonymous"></script>
+
     {% load static %}
     <script type="text/javascript" src="{% static 'index.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">To-Do</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-info mb-3">
+                    <div class="card-header text-center">My To-Do</div>
+                    <div class="card-body text-info">
+
+                        <div class="row">
+
+                        <form action="/addTodoItem/" method="post">{% csrf_token %}
+                            <div class="input-group mb-3 shadow bg-white">
+
+<!--                                <div class="input-group-append">-->
+
+                                    <div class="col-11">
+<!--                                    <input type="text" name="content">-->
+                                    <input class="form-control" type="text" name="content">
+                                    </div>
+
+                                    <div class="col-1">
+                                    <button class="btn btn-outline-secondary"
+                                            type="submit"
+                                            id="button-addon2">
+                                        Add Task
+                                    </button>
+                                    </div>
+<!--                                </div>-->
+                            </div>
+                        </form>
+
+                        </div>
+
+
+                        <div class="row mt-4">
+                            <div class="col-8">
+                                <h3 class="card-title">Tasks</h3>
+                            </div>
+                            <div class="col-2">
+                                <!--                                <a href="{# % url 'ToDo:Delete all Completed' % #}">-->
+                                <button type="button" class="btn btn-sm btn-outline-info rounded-pill">
+                                    Remove Completed
+                                </button>
+                                <!--                                </a>-->
+                            </div>
+                            <div class="col-2 mr-auto">
+                                <!--                                <a href="{# % url 'ToDo:Delete All' % #}">-->
+                                <button type="button" class="btn btn-sm btn-outline-info rounded-pill">
+                                    Remove All
+                                </button>
+                                <!--                                </a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <div class="container text-white">
         <div class="todoTitle">
@@ -29,9 +116,6 @@
         </div>
     </div>
 
-</head>
-
-<body>
 
 <div class="container">
     {% for i in all_items %}
