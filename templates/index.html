@@ -57,16 +57,16 @@
                     </form>
 
                     <div class="row mt-4">
-                        <div class="col-6">
+                        <div class="col-8">
                             <h3 class="card-title">Tasks</h3>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-lg-2">
                             <form action="/markAllCompleteTodoItems/" method="post">{% csrf_token %}
                                 <input class="btn btn-sm btn-outline-info rounded-pill"
                                        type="submit" value="Complete All">
                             </form>
                         </div>
-                        <div class="col-2 mr-auto">
+                        <div class="col-lg-2 mr-auto">
                             <form action="/deleteCompletedAllTodoItems/" method="post">{% csrf_token %}
                                 <input class="btn btn-sm btn-outline-info rounded-pill"
                                        type="submit" value="Delete Completed">
@@ -77,47 +77,67 @@
 
                     {% for i in all_items %}
 
-                    <div class="card mt-2 shadow-sm">
+                    <div class="card mt-2 shadow-sm item-card">
                         <div class="card-body">
 
                             <div class="row" style="margin:auto">
-                                <div class="col-10">
+                                <div class="col-xl-11">
+
+                                    {% if i.beingEdited %}
+                                    <form action="/commitEdits/{{i.id}}/" method="post">{% csrf_token %}
+                                        <div class="input-group mb-3 shadow bg-white">
+                                            <input class="form-control" type="text" name="content" value="{{i.content}}">
+                                            <button class="btn btn-outline-secondary text-nowrap"
+                                                    type="submit">
+                                                Update
+                                            </button>
+                                        </div>
+                                    </form>
+                                    {% else %}
+
                                     {% if i.isCompleted %}<s>{% endif %}
                                     <h5>{{i.content}}</h5>
-                                    {% if i.isCompleted %}</s><p><em>You've completed this task</em></p>{% endif %}
+                                    {% if i.isCompleted %}</s>
+                                    <p><em>You've completed this task</em></p>{% endif %}
+
+                                    {% endif %}
                                 </div>
 
-                                <div class="col-sm-2">
-                                <div class="btn-group" role="group">
+                                <div class="col-xl-1">
+                                    <div class="btn-group" role="group">
 
-<!--                                    <div class="col-1 close">-->
+                                        <form action="/setEditTrue/{{i.id}}/" method="post">{% csrf_token %}
+                                            <input type="submit" class="btn btn-sm btn-outline-info btn-circle"
+                                                   value="&#128393">
+                                        </form>
+
                                         {% if i.isCompleted %}
                                         <form action="/markAsUnreadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                                            <input type="submit" class="btn btn-default btn-circle" id="unread_button"
+                                            <input type="submit" class="btn btn-sm btn-outline-info btn-circle"
                                                    value="🗹">
                                         </form>
-                                    {% else %}
+                                        {% else %}
                                         <form action="/markAsReadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                                            <input type="submit" class="btn btn-default btn-circle" value="🗸">
+                                            <input type="submit" class="btn btn-sm btn-outline-info btn-circle"
+                                                   value="🗸">
                                         </form>
                                         {% endif %}
-<!--                                    </div>-->
 
-<!--                                    <div class="col-1">-->
                                         {% if i.isCompleted %}
                                         <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                                            <input class="btn btn-default btn-circle" type="submit" value="✗">
+                                            <input type="submit" class="btn btn-sm btn-outline-info btn-circle"
+                                                   value="✗">
                                         </form>
                                         {% else %}
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-default btn-circle" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-sm btn-outline-info btn-circle"
+                                                data-bs-toggle="modal"
                                                 data-bs-target="#confirmDeleteModal">
                                             ✗
                                         </button>
                                         {% endif %}
-<!--                                    </div>-->
 
-                                </div>
+                                    </div>
                                 </div>
 
                             </div>

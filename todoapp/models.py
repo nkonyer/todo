@@ -7,4 +7,4 @@ from django.db import models
 class TodoListItem(models.Model):
     content = models.TextField()
     isCompleted = models.BooleanField(default=False)
-    # isCompleted = True
+    beingEdited = models.BooleanField(default=False)

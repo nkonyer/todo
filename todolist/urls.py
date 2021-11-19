@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from todoapp.views import todoappView, addTodoView, deleteTodoView, markAsReadTodoView, markAsUnreadTodoView,\
-    deleteCompletedAllTodoView, markAllCompleteTodoView
+    deleteCompletedAllTodoView, markAllCompleteTodoView, setEditTrueView, commitEditsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,7 @@ urlpatterns = [
     path('markAsUnreadTodoItem/<int:i>/', markAsUnreadTodoView),
     path('deleteCompletedAllTodoItems/', deleteCompletedAllTodoView),
     path('markAllCompleteTodoItems/', markAllCompleteTodoView),
+    path('setEditTrue/<int:i>/', setEditTrueView),
+    path('commitEdits/<int:i>/', commitEditsView),
     path('', todoappView),
 ]

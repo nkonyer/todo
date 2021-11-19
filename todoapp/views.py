@@ -50,3 +50,20 @@ def markAllCompleteTodoView(request):
         item.save()
     return HttpResponseRedirect('/')
 
+
+def setEditTrueView(request, i):
+    y = TodoListItem.objects.get(id=i)
+    y.beingEdited = True
+    y.save()
+    return HttpResponseRedirect('/')
+
+
+def commitEditsView(request, i):
+    y = TodoListItem.objects.get(id=i)
+    x = request.POST['content']
+    y.content = x
+    y.beingEdited = False
+    y.save()
+    return HttpResponseRedirect('/')
+
+
