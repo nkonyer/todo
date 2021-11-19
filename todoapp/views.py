@@ -34,3 +34,19 @@ def markAsUnreadTodoView(request, i):
     y.save()
     return HttpResponseRedirect('/')
 
+
+def deleteCompletedAllTodoView(request):
+    all_todo_items = TodoListItem.objects.all()
+    for item in all_todo_items:
+        if item.isCompleted:
+            item.delete()
+    return HttpResponseRedirect('/')
+
+
+def markAllCompleteTodoView(request):
+    all_todo_items = TodoListItem.objects.all()
+    for item in all_todo_items:
+        item.isCompleted = True
+        item.save()
+    return HttpResponseRedirect('/')
+

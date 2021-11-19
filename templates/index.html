@@ -60,22 +60,20 @@
 
 
                     <div class="row mt-4">
-                        <div class="col-8">
+                        <div class="col-6">
                             <h3 class="card-title">Tasks</h3>
                         </div>
                         <div class="col-2">
-                            <!--                                <a href="{# % url 'ToDo:Delete all Completed' % #}">-->
-                            <button type="button" class="btn btn-sm btn-outline-info rounded-pill">
-                                Remove Completed
-                            </button>
-                            <!--                                </a>-->
+                            <form action="/markAllCompleteTodoItems/" method="post">{% csrf_token %}
+                                <input class="btn btn-sm btn-outline-info rounded-pill"
+                                       type="submit" value="Complete All">
+                            </form>
                         </div>
                         <div class="col-2 mr-auto">
-                            <!--                                <a href="{# % url 'ToDo:Delete All' % #}">-->
-                            <button type="button" class="btn btn-sm btn-outline-info rounded-pill">
-                                Remove All
-                            </button>
-                            <!--                                </a>-->
+                            <form action="/deleteCompletedAllTodoItems/" method="post">{% csrf_token %}
+                                <input class="btn btn-sm btn-outline-info rounded-pill"
+                                       type="submit" value="Delete Completed">
+                            </form>
                         </div>
                     </div>
 
@@ -147,7 +145,7 @@
             </div>
             <div class="modal-body">
                 <p>Task has not been completed!</p>
-                <p>Please mark task as "completed," then delete.</p>
+                <p>Please mark task as completed then delete.</p>
                 <!--
                 <p>This to-do item has not been marked as completed!</p>
                 <p>Are you sure you want to delete it? This cannot be undone.</p>
