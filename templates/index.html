@@ -90,49 +90,39 @@
                                 <div class="col-10">
                                     {% if i.isCompleted %}<s>{% endif %}
                                     <h5>{{i.content}}</h5>
-                                    {% if i.isCompleted %}</s>{% endif %}
+                                    {% if i.isCompleted %}</s><p><em>You've completed this task</em></p>{% endif %}
                                 </div>
 
-                                <div class="col-sm-1">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </button>
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                                            <!--
-                                            <button type="button" class="btn btn-danger" value="TEST" onclick="deleteButtonAction({{i.id}})">
-                                            -->
-
-                                            {% if i.isCompleted %}
-                                            <form action="/markAsUnreadTodoItem/{{i.id}}/" method="post">{% csrf_token
-                                                %}
-                                                <input class="btn btn-secondary" type="submit"
-                                                       value="Mark as Incomplete">
-                                            </form>
-                                            {% else %}
-                                            <form action="/markAsReadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                                                <input class="btn btn-secondary" type="submit" value="Mark as Complete">
-                                            </form>
-                                            {% endif %}
-
-                                            {% if i.isCompleted %}
-                                            <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                                                <input class="btn btn-danger" type="submit" value="Delete">
-                                            </form>
-
-                                            {% else %}
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#confirmDeleteModal">
-                                                Delete
-                                            </button>
-                                            {% endif %}
-                                        </div>
-
-                                    </div>
+                                {% if i.isCompleted %}
+                                <div class="col-1 close">
+                                    <form action="/markAsUnreadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+                                        <input type="submit" class="btn btn-default btn-circle" id="unread_button" value = "🗹">
+<!--                                            <i class="fas fa-check"></i>-->
+                                    </form>
                                 </div>
+                                {% else %}
+                                <div class="col-1 close">
+                                    <form action="/markAsReadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+                                        <input type="submit" class="btn btn-default btn-circle" value = "🗸">
+                                        <!--                                            <i class="fas fa-check"></i>-->
+                                    </form>
+                                </div>
+                                {% endif %}
+
+                                <div class="col-1">
+                                    {% if i.isCompleted %}
+                                    <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+                                        <input class="btn btn-default btn-circle" type="submit" value="✗">
+                                    </form>
+                                    {% else %}
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-default btn-circle" data-bs-toggle="modal"
+                                            data-bs-target="#confirmDeleteModal">
+                                        ✗
+                                    </button>
+                                    {% endif %}
+                                </div>
+
                             </div>
                         </div>
                     </div>
