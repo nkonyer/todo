@@ -17,11 +17,10 @@
     {% load static %}
     <script type="text/javascript" src="{% static 'index.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
-
 </head>
 
-<body>
 
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">To-Do</a>
 
@@ -47,7 +46,6 @@
                 <div class="card-header text-center">My To-Do</div>
                 <div class="card-body text-info">
 
-
                     <form action="/addTodoItem/" method="post">{% csrf_token %}
                         <div class="input-group mb-3 shadow bg-white">
                             <input class="form-control" type="text" name="content">
@@ -57,7 +55,6 @@
                             </button>
                         </div>
                     </form>
-
 
                     <div class="row mt-4">
                         <div class="col-6">
@@ -79,8 +76,6 @@
 
 
                     {% for i in all_items %}
-
-                    <!-- <form id="{{i.id}}" action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}</form> -->
 
                     <div class="card mt-2 shadow-sm">
                         <div class="card-body">
@@ -124,6 +119,7 @@
                             </div>
                         </div>
                     </div>
+
                     {% endfor %}
 
                 </div>
@@ -146,34 +142,14 @@
             <div class="modal-body">
                 <p>Task has not been completed!</p>
                 <p>Please mark task as completed then delete.</p>
-                <!--
-                <p>This to-do item has not been marked as completed!</p>
-                <p>Are you sure you want to delete it? This cannot be undone.</p>
-                -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK
                 </button>
-
-                <!--
-                <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                    <input class="btn btn-danger" type="submit" value="Delete">
-                </form>
-                -->
-
-                <!-- <button type="button" class="btn btn-danger">Delete</button> -->
             </div>
         </div>
     </div>
 </div>
-
-<!--
-<script>
-    deleteButtonAction(item_id) {
-        document.getElementById(item_id).submit();
-    }
-</script>
--->
 
 <!-- Bootstrap JS Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
