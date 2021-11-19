@@ -47,30 +47,16 @@
                 <div class="card-header text-center">My To-Do</div>
                 <div class="card-body text-info">
 
-                    <div class="row">
 
-                        <form action="/addTodoItem/" method="post">{% csrf_token %}
-                            <div class="input-group mb-3 shadow bg-white">
-
-                                <!--                                <div class="input-group-append">-->
-
-                                <div class="col-11">
-                                    <!--                                    <input type="text" name="content">-->
-                                    <input class="form-control" type="text" name="content">
-                                </div>
-
-                                <div class="col-1 text-right">
-                                    <button class="btn btn-outline-secondary"
-                                            type="submit"
-                                            id="button-addon2">
-                                        Add Task
-                                    </button>
-                                </div>
-                                <!--                                </div>-->
-                            </div>
-                        </form>
-
-                    </div>
+                    <form action="/addTodoItem/" method="post">{% csrf_token %}
+                        <div class="input-group mb-3 shadow bg-white">
+                            <input class="form-control" type="text" name="content">
+                            <button class="btn btn-outline-secondary text-nowrap"
+                                    type="submit">
+                                Add Task
+                            </button>
+                        </div>
+                    </form>
 
 
                     <div class="row mt-4">
@@ -92,69 +78,70 @@
                             <!--                                </a>-->
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<div class="container">
-    {% for i in all_items %}
+                    {% for i in all_items %}
 
-    <!-- <form id="{{i.id}}" action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}</form> -->
+                    <!-- <form id="{{i.id}}" action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}</form> -->
 
-    <div class="todoItem">
-        <div class="row">
-            <div class="col-sm-11">
-                <li class="todoItemContent">
-                    {% if i.isCompleted %}<s>{% endif %}
-                    <b><em>{{i.content}}</em></b>
-                    {% if i.isCompleted %}</s>{% endif %}
-                </li>
-            </div>
+                    <div class="card mt-2 shadow-sm">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-10">
+                                    {% if i.isCompleted %}<s>{% endif %}
+                                    <h5>{{i.content}}</h5>
+                                    {% if i.isCompleted %}</s>{% endif %}
+                                </div>
 
-            <div class="col-sm-1">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </button>
+                                <div class="col-sm-1">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        </button>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                        <!--
-                        <button type="button" class="btn btn-danger" value="TEST" onclick="deleteButtonAction({{i.id}})">
-                        -->
+                                            <!--
+                                            <button type="button" class="btn btn-danger" value="TEST" onclick="deleteButtonAction({{i.id}})">
+                                            -->
 
-                        {% if i.isCompleted %}
-                        <form action="/markAsUnreadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                            <input class="btn btn-secondary" type="submit" value="Mark as Incomplete">
-                        </form>
-                        {% else %}
-                        <form action="/markAsReadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                            <input class="btn btn-secondary" type="submit" value="Mark as Complete">
-                        </form>
-                        {% endif %}
+                                            {% if i.isCompleted %}
+                                            <form action="/markAsUnreadTodoItem/{{i.id}}/" method="post">{% csrf_token
+                                                %}
+                                                <input class="btn btn-secondary" type="submit"
+                                                       value="Mark as Incomplete">
+                                            </form>
+                                            {% else %}
+                                            <form action="/markAsReadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+                                                <input class="btn btn-secondary" type="submit" value="Mark as Complete">
+                                            </form>
+                                            {% endif %}
 
-                        {% if i.isCompleted %}
-                        <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                            <input class="btn btn-danger" type="submit" value="Delete">
-                        </form>
+                                            {% if i.isCompleted %}
+                                            <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+                                                <input class="btn btn-danger" type="submit" value="Delete">
+                                            </form>
 
-                        {% else %}
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#confirmDeleteModal">
-                            Delete
-                        </button>
-                        {% endif %}
+                                            {% else %}
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#confirmDeleteModal">
+                                                Delete
+                                            </button>
+                                            {% endif %}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    {% endfor %}
 
                 </div>
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 
 
