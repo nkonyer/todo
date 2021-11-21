@@ -6,6 +6,7 @@ WORKDIR /todoproject
 
 # COPY . .
 
+
 COPY ./static ./static
 COPY ./templates ./templates
 COPY ./todoapp ./todoapp
