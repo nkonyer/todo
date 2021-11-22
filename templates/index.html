@@ -107,33 +107,37 @@
                                     <div class="btn-group" role="group">
 
                                         <form action="/setEditTrue/{{i.id}}/" method="post">{% csrf_token %}
-                                            <input type="submit" class="btn btn-sm btn-outline-info btn-circle"
-                                                   value="&#128393">
+                                            <button type="submit" class="btn btn-sm btn-outline-info btn-circle">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </button>
                                         </form>
 
                                         {% if i.isCompleted %}
                                         <form action="/markAsUnreadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                                            <input type="submit" class="btn btn-sm btn-outline-info btn-circle"
-                                                   value="🗹">
+                                            <button type="submit" class="btn btn-sm btn-outline-info btn-circle">
+                                                <i class="fas fa-check-square"></i>
+                                            </button>
                                         </form>
                                         {% else %}
                                         <form action="/markAsReadTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                                            <input type="submit" class="btn btn-sm btn-outline-info btn-circle"
-                                                   value="🗸">
+                                            <button type="submit" class="btn btn-sm btn-outline-info btn-circle">
+                                                <i class="fas fa-check"></i>
+                                            </button>
                                         </form>
                                         {% endif %}
 
                                         {% if i.isCompleted %}
                                         <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-                                            <input type="submit" class="btn btn-sm btn-outline-info btn-circle"
-                                                   value="✗">
+                                            <button type="submit" class="btn btn-sm btn-outline-info btn-circle">
+                                                <i class="fas fa-times"></i>
+                                            </button>
                                         </form>
                                         {% else %}
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-sm btn-outline-info btn-circle"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#confirmDeleteModal">
-                                            ✗
+                                            <i class="fas fa-times"></i>
                                         </button>
                                         {% endif %}
 
